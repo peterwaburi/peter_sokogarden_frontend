@@ -1,0 +1,9 @@
+const SignInComponent = () => {
+    return ( 
+        <div>
+            <h1>SignIn Component</h1>
+        </div>
+     );
+}
+ 
+export default SignInComponent;

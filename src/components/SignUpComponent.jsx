@@ -46,7 +46,7 @@ const SignUpComponent = () => {
             console.log(error);
             setError(error.message);
             setLoading("");
-            
+
             updateUsername("")
             updateEmail("")
             updatePhone("")

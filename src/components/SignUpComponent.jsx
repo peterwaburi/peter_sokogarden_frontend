@@ -13,11 +13,13 @@ const SignUpComponent = () => {
     let [error, setError] = useState("")
     let [success, setSuccess] = useState("")
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         // prevent default behaviour
         e.preventDefault();
 
         // notify user to wait
+        setError("")
+        setSuccess("")
         setLoading("Submitting Data! Please wait ....")
 
         // confirm user input
@@ -26,19 +28,29 @@ const SignUpComponent = () => {
         // try send data to sever
         try {
             // create form data
-            const user_data = FormData();
+            const user_data = new FormData();
             user_data.append("username", username);
             user_data.append("email", email);
             user_data.append("phone", phone);
             user_data.append("password", password);
 
             // use axios tosend data to sever
-            const response = axios.post("https://kmuturi.alwaysdata.net/api/signup", user_data)
+            const response = await axios.post("https://peter511.alwaysdata.net/api/signup", user_data)
             console.log(response);
+            if (response.status === 200) {
+                setSuccess(response.data.message);
+                setLoading("");
+            }
+
         } catch (error) {
             console.log(error);
             setError(error.message);
             setLoading("");
+            
+            updateUsername("")
+            updateEmail("")
+            updatePhone("")
+            updatePassword("")
         }
     }
 
@@ -48,6 +60,7 @@ const SignUpComponent = () => {
                 <h2>Sign Up</h2>
                 <h5 className="text-warning">{loading}</h5>
                 <h5 className="text-danger">{error}</h5>
+                <h5 className="text-success">{success}</h5>
 
                 <form onSubmit={handleSubmit}>
 

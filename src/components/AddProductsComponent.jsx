@@ -6,7 +6,7 @@ const AddProductsComponent = () => {
     let [product_name, setProductName] = useState("");
     let [product_description, setProductDescription] = useState("");
     let [product_cost, setProductCost] = useState("");
-    let [product_category, setProductCartegory] = useState("");
+    let [product_cartegory, setProductCartegory] = useState("");
     let [product_image, setProductImage] = useState("");
 
     let [loading, setLoading] = useState("");
@@ -26,10 +26,10 @@ const AddProductsComponent = () => {
             data.append("product_name", product_name);
             data.append("product_description", product_description);
             data.append("product_cost", product_cost);
-            data.append("product_category", product_category);
+            data.append("product_cartegory", product_cartegory);
             data.append("product_image", product_image);
 
-            const response = await axios.post("https://kmuturi.alwaysdata.net/api/add_product", data);
+            const response = await axios.post("https://peter511.alwaysdata.net/api/add_product", data);
             console.log(response)
 
             if (response.status === 200) {

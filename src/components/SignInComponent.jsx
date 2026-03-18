@@ -35,7 +35,7 @@ const SignInComponent = () => {
 
             if (response.status === 200) {
                 if (response.data.user) {
-                    localStorage.setItem("user", response.data.user)
+                    localStorage.setItem("user", JSON.stringify(response.data.user))
                     setSuccess(response.data.message);
                     navigate("/")
                 }

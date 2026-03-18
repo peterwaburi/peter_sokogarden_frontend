@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+    const user = JSON.parse(localStorage.getItem("user"))
+
     return (
         <nav className="navbar navbar-expand-lg">
             <Link className="navbar-brand" to='/'>Sokogarden</Link>
@@ -14,10 +17,17 @@ const Navbar = () => {
                     <Link className="nav-link" to='/addproducts'>Add Products</Link>
                 </div>
 
-                <div className="navbar-nav ms-auto">
-                    <Link className="nav-link" to="/signin">Sign In</Link>
-                    <Link className="nav-link" to="/signup">Sign Up</Link>
-                </div>
+                {user ? (
+
+                    <div className="navbar-nav ms-auto">
+                        <Link className="nav-link" to="#">{user.username}</Link>
+                        <button className="btn nav-link">Log Out</button>
+                    </div>
+                ) : (
+                    <div className="navbar-nav ms-auto">
+                        <Link className="nav-link" to="/signin">Sign In</Link>
+                        <Link className="nav-link" to="/signup">Sign Up</Link>
+                    </div>)}
 
             </div>
         </nav>

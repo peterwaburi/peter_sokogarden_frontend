@@ -5,6 +5,7 @@ import SignInComponent from './components/SignInComponent';
 import GetProductsComponent from './components/GetProductsComponent';
 import AddProductsComponent from './components/AddProductsComponent';
 import Navbar from './components/Navbar';
+import MakePaymentComponent from "./components/MakePaymentsComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.min.js'
 
@@ -24,6 +25,7 @@ function App() {
             <Route path='/signin' element={<SignInComponent />} />
             <Route path='/addproducts' element={<AddProductsComponent />} />
             <Route path='/' element={<GetProductsComponent />} />
+            <Route path='/makepayment' element={<MakePaymentComponent />} />
           </Routes>
         </div>
       </div>

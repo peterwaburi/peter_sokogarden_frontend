@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const GetProductsComponent = () => {
 
@@ -9,6 +10,8 @@ const GetProductsComponent = () => {
 
     // base url for image location
     const img_url = "https://kmuturi.alwaysdata.net/static/images/"
+
+    let navigator = useNavigate();
 
 
     const getProducts = async () => {
@@ -48,7 +51,8 @@ const GetProductsComponent = () => {
                             <p className="text-muted">{product.product_description}</p>
                             <b className="text-warning">{product.product_cost}</b>
                             <br />
-                            <button className="btn btn-dark">Purchase now</button>
+                            <button className="btn btn-dark" onClick={() => { navigator("/makepayment", { state: { product } }) }}>Purchase now</button>
+                            
                         </div>
                     </div>
                 </div>
